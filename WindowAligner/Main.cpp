@@ -220,8 +220,8 @@ BOOL Init(HINSTANCE hInstance)
 		WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU, //style
 		0,		//x
 		0,		//y
-		100,	//width
-		100,	//height
+		0,	//width
+		0,	//height
 		NULL,	//menu handle
 		NULL,	//instance handle
 		hInstance,
@@ -262,26 +262,8 @@ void End()
 	UnregisterHotKey(hWnd, ID_HOTKEY_DOWN);
 }
 
-//BOOL monitorEnumProc(HMONITOR hMon, HDC hdcMon, LPRECT lpMon, LPARAM dwData);
-
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	/*INT count = 0;
-	TCHAR szTitle[1024];
-	TCHAR szClass[1024];
-	TCHAR message[4096];
-	//EnumWindows(EnumWindowsProc, (LPARAM)&count);
-	HWND hWnd = GetForegroundWindow(); //最前面のウィンドウのハンドルを取得
-	RECT rect;
-	//GetWindowRect(hWnd, &rect); //ウィンドウの位置とサイズ
-	//GetWindowText(hWnd, szTitle, sizeof(szTitle));
-	//GetClassName(hWnd, szClass, sizeof(szClass));
-	int width = GetSystemMetrics(SM_CXSCREEN);
-	int height = GetSystemMetrics(SM_CYSCREEN);
-	SetWindowPos(hWnd, NULL, 0, 0, width / 2, height / 2, 0);
-	EnumDisplayMonitors(NULL, NULL, (MONITORENUMPROC)monitorEnumProc, 0);
-	wsprintf(message, TEXT("%d %d"), width, height);
-	MessageBox(NULL, message, TEXT("hoge"), MB_OK);*/
 	MSG msg;
 	if ( Init(hInstance) == EXIT_FAILURE ) return EXIT_FAILURE;
 
@@ -295,17 +277,3 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	return EXIT_SUCCESS;
 }
-
-/*BOOL monitorEnumProc(HMONITOR hMon, HDC hdcMon, LPRECT lpMon, LPARAM dwData)
-{
-	monitors[monitors_max].bottom = lpMon->bottom;
-	monitors[monitors_max].left = lpMon->left;
-	monitors[monitors_max].right = lpMon->right;
-	monitors[monitors_max].top = lpMon->top;
-	if ( monitors_max >= MONITORS_MAX_LIM - 1 )
-	{
-		return FALSE;
-	}
-	monitors_max++;
-	return TRUE;
-}*/
